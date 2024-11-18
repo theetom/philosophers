@@ -3,27 +3,28 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: toferrei <toferrei@student.42.fr>          +#+  +:+       +#+        */
+/*   By: toferrei <toferrei@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 14:59:10 by toferrei          #+#    #+#             */
-/*   Updated: 2024/11/18 16:10:06 by toferrei         ###   ########.fr       */
+/*   Updated: 2024/11/18 17:55:13 by toferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philosophers.h"
 
-https://medium.com/@jalal92/the-dining-philosophers-7157cc05315
+// https://medium.com/@jalal92/the-dining-philosophers-7157cc05315
 
-41.09
+// 41.09
 
 int	main(int argc, char **argv)
 {
 	t_table	table;
+
 	if (argc == 5 | argc == 6)
 	{
-		// correct input
-		// 1) errors checking, filling table table
-		parse_input(&table, argv); //TO DO
+		/* 		correct input
+		1) errors checking, filling table table */
+		parse_input(&table, argv); /* //TO DO */
 
 		// 2) creating the actual thing
 		data_init(&table);
@@ -32,7 +33,7 @@ int	main(int argc, char **argv)
 		dinner_start(&table);
 
 		// 4) no leaks ->philos full |1 philo died
-		clean(&table)
+		clean(&table);
 	}
 	else
 	{

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philosophers.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: toferrei <toferrei@student.42.fr>          +#+  +:+       +#+        */
+/*   By: toferrei <toferrei@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 14:45:41 by toferrei          #+#    #+#             */
-/*   Updated: 2024/11/18 15:50:56 by toferrei         ###   ########.fr       */
+/*   Updated: 2024/11/18 16:42:18 by toferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 # include <pthread.h>
 # include <sys/time.h>
 # include <limits.h>
+# include <errno.h>
 
 # define RST	"\033[0m"
 # define RED	"\033[1;31m"

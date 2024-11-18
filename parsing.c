@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: toferrei <toferrei@student.42.fr>          +#+  +:+       +#+        */
+/*   By: toferrei <toferrei@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 15:12:44 by toferrei          #+#    #+#             */
-/*   Updated: 2024/11/18 15:40:45 by toferrei         ###   ########.fr       */
+/*   Updated: 2024/11/18 17:54:09 by toferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,7 @@ static inline bool	is_number(char c)
 
 static inline bool	is_space(char c)
 {
-	return ((c >= 9 && c<= 13) || 32 == c);
-		
+	return ((c >= 9 && c <= 13) || 32 == c);
 }
 
 /* 
@@ -33,7 +32,7 @@ static inline bool	is_space(char c)
 
 static const char	*valid_input(const char *str)
 {
-	int	len;
+	int			len;
 	const char	*number;
 
 	len = 0;
