@@ -6,7 +6,7 @@
 /*   By: toferrei <toferrei@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 14:45:41 by toferrei          #+#    #+#             */
-/*   Updated: 2024/11/18 16:42:18 by toferrei         ###   ########.fr       */
+/*   Updated: 2024/11/19 00:10:19 by toferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,29 +44,29 @@ typedef enum	e_opcode
 }				t_opcode;
 
 typedef pthread_mutex_t	t_mtx;
-typedef struct s_table t_table;
+typedef struct s_table	t_table;
 
-typedef struct	s_fork
+typedef struct s_fork
 {
 	t_mtx		fork;
 	int			fork_id;
 }				t_fork;
 // parse
 
-typedef struct	s_philo
+typedef struct s_philo
 {
 	int			id;
 	long		time_to_die;
 	long		meals_counter;
 	bool		full;
 	long		last_meal_time;
-	t_fork		*left_fork;
-	t_fork		*right_fork;
+	t_fork		*first_fork;
+	t_fork		*second_fork;
 	pthread_t	thread_id;
 	t_table		*table;
 }				t_philo;
 
-typedef struct	s_table
+typedef struct s_table
 {
 	long		philo_nbr;
 	long		time_to_die;// parse
@@ -75,6 +75,7 @@ typedef struct	s_table
 	long		nbr_limits_meals;
 	long		start_simulation;
 	bool		end_simulation;
+	bool		all_threads_ready;
 	t_fork		*forks;
 	t_philo		*philos;
 }				t_table;
@@ -86,5 +87,17 @@ void	parse_input(t_table *table, char **argv);
 // Utils
 
 void	error_exit(const char *error);
+
+// Init
+
+void	data_init(t_table *table);
+
+// Safe Functions
+
+void	*safe_malloc(size_t bytes);
+void	safe_mutex_handle(t_mtx *mutex, t_opcode opcode);
+void	safe_thread_handle(pthread_t *thread, void *(*foo)(void *),
+			void *data, t_opcode opcode);
+
 
 #endif
