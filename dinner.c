@@ -6,16 +6,11 @@
 /*   By: toferrei <toferrei@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 18:34:29 by toferrei          #+#    #+#             */
-/*   Updated: 2024/11/18 23:56:35 by toferrei         ###   ########.fr       */
+/*   Updated: 2024/11/19 15:44:22 by toferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philosophers.h"
-
-void	wait_all_threads()
-{
-
-}
 
 void	*dinner_simulation(void *data)
 {
@@ -42,4 +37,8 @@ void	dinner_start(t_table *table)
 			safe_thread_handle(&table->philos[i].thread_id, dinner_simulation,
 				&table->philos[i], CREATE);
 	}
+
+
+	
+	set_bool(&table->table_mutex, &table->all_threads_ready, true)
 }

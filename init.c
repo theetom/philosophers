@@ -6,7 +6,7 @@
 /*   By: toferrei <toferrei@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 15:40:49 by toferrei          #+#    #+#             */
-/*   Updated: 2024/11/18 23:55:20 by toferrei         ###   ########.fr       */
+/*   Updated: 2024/11/19 15:30:02 by toferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ void	data_init(t_table *table)
 	table->all_threads_ready = false;
 	table->philos = safe_malloc (sizeof(t_philo) * table->philo_nbr);
 	table->forks = safe_malloc (sizeof(t_fork) * table->philo_nbr);
+	safe_mutex_handle(&table->table_mutex, INIT);
 	while (++i < table->philo_nbr)
 	{
 		safe_mutex_handle(&table->forks[i].fork, INIT);
