@@ -39,6 +39,6 @@ int	main(int argc, char **argv)
 	{
 		// 
 		error_exit("Wrong input:\n"
-				G"Correct is ./philosophers 5 800 200 200 [5]"RST);
+				"Correct is ./philosophers 5 800 200 200 [5]"RST);
 	}
 }
