@@ -58,7 +58,7 @@ typedef struct s_fork
 	t_mtx		fork;
 	int			fork_id;
 }				t_fork;
-// parse
+
 
 typedef struct s_philo
 {
@@ -76,7 +76,7 @@ typedef struct s_philo
 typedef struct s_table
 {
 	long		philo_nbr;
-	long		time_to_die;// parse
+	long		time_to_die;
 	long		time_to_sleep;
 	long		time_to_eat;
 	long		nbr_limits_meals;
@@ -95,6 +95,7 @@ void	parse_input(t_table *table, char **argv);
 // Utils
 
 void	error_exit(const char *error);
+long	get_time(t_time_code time_code);
 
 // Init
 

@@ -37,7 +37,7 @@ void	dinner_start(t_table *table)
 			safe_thread_handle(&table->philos[i].thread_id, dinner_simulation,
 				&table->philos[i], CREATE);
 	}
-
+	table->start_simulation
 
 	
 	set_bool(&table->table_mutex, &table->all_threads_ready, true)
