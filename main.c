@@ -6,7 +6,7 @@
 /*   By: toferrei <toferrei@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 14:59:10 by toferrei          #+#    #+#             */
-/*   Updated: 2024/11/19 15:53:31 by toferrei         ###   ########.fr       */
+/*   Updated: 2024/11/21 16:17:11 by toferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 // https://medium.com/@jalal92/the-dining-philosophers-7157cc05315
 
-// 1.14.24
+// 1.17.46
 
 int	main(int argc, char **argv)
 {
