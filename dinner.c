@@ -6,7 +6,7 @@
 /*   By: toferrei <toferrei@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 18:34:29 by toferrei          #+#    #+#             */
-/*   Updated: 2024/11/24 02:10:08 by toferrei         ###   ########.fr       */
+/*   Updated: 2024/11/25 13:50:27 by toferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,9 @@ void	dinner_start(t_table *table)
 			safe_thread_handle(&table->philos[i].thread_id, dinner_simulation,
 				&table->philos[i], CREATE);
 	}
+	// monitor
+	safe_thread_handle(&table->monitor, monitor_dinner, table, CREATE);
+	
 	table->start_simulation = get_time(MILLISECOND);
 
 	

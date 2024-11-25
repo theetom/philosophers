@@ -1,24 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   synchro_utils.c                                    :+:      :+:    :+:   */
+/*   monitor.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: toferrei <toferrei@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/19 15:40:38 by toferrei          #+#    #+#             */
-/*   Updated: 2024/11/25 14:05:35 by toferrei         ###   ########.fr       */
+/*   Created: 2024/11/25 13:53:18 by toferrei          #+#    #+#             */
+/*   Updated: 2024/11/25 13:56:28 by toferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philosophers.h"
 
-void	wait_all_threads(t_table *table)
+void	*monitor_dinner(void *data)
 {
-	while (!get_bool(&table->table_mutex, &table->all_threads_ready))
-		;
-}
+	t_table	*table;
 
-bool	all_threads_running()
-{
-	
+	table = (t_table *)data;
+
+	// make sure all philos running
+
+	while (!all_threads_running())
+	{
+		
+	}
+	return (NULL);
 }

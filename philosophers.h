@@ -6,7 +6,7 @@
 /*   By: toferrei <toferrei@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 14:45:41 by toferrei          #+#    #+#             */
-/*   Updated: 2024/11/24 22:13:01 by toferrei         ###   ########.fr       */
+/*   Updated: 2024/11/25 14:07:25 by toferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ typedef struct s_philo
 	t_table		*table;
 }				t_philo;
 
-typedef struct s_table
+struct s_table
 {
 	long		philo_nbr;
 	long		time_to_die;
@@ -96,11 +96,13 @@ typedef struct s_table
 	long		start_simulation;
 	bool		end_simulation;
 	bool		all_threads_ready;
+	long		threads_running_nbr;
+	pthread_t	monitor;
 	t_mtx		table_mutex;
 	t_mtx		write_mutex;
 	t_fork		*forks;
 	t_philo		*philos;
-}				t_table;
+};
 
 void	dinner_start(t_table *table);
 
