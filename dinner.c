@@ -6,11 +6,37 @@
 /*   By: toferrei <toferrei@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 18:34:29 by toferrei          #+#    #+#             */
-/*   Updated: 2024/11/21 16:17:05 by toferrei         ###   ########.fr       */
+/*   Updated: 2024/11/24 02:10:08 by toferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philosophers.h"
+
+static void	thinking(t_philo *philo)
+{
+	write_status(THINKING, philo, DEBUG_MODE);
+}
+
+static void	eat(t_philo *philo)
+{
+	safe_mutex_handle(&philo->first_fork->fork, LOCK);
+	write_status(TAKE_FIRST_FORK, philo, DEBUG_MODE);
+	safe_mutex_handle(&philo->second_fork->fork, LOCK);
+	write_status(TAKE_SECOND_FORK, philo, DEBUG_MODE);
+
+	set_long(&philo->philo_mutex, &philo->last_meal_time,
+		get_time(MILLISECOND));
+	philo->meals_counter++;
+	write_status(EATING, philo, DEBUG_MODE);
+	precise_usleep(philo->table->time_to_eat, philo->table);
+	if (philo->table->nbr_limits_meals > 0
+		&& philo->meals_counter == philo->table->nbr_limits_meals)
+		set_bool(&philo->philo_mutex, &philo->full, true);
+
+	safe_mutex_handle(&philo->first_fork->fork, UNLOCK);
+	safe_mutex_handle(&philo->second_fork->fork, UNLOCK);
+
+}
 
 void	*dinner_simulation(void *data)
 {
@@ -31,17 +57,19 @@ void	*dinner_simulation(void *data)
 		// eat
 		eat(philo);
 
-		// sleep
-		thingking(philo);
-		
+		// sleep --> write status & precise usleep
+		write_status(SLEEPING, philo, DEBUG_MODE);
+		precise_usleep(philo->table->time_to_sleep, philo->table);
+
+		// thinking
+		thinking(philo);
 	}
-	
 	return (NULL);
 }
 
 void	dinner_start(t_table *table)
 {
-	int i;
+	int	i;
 
 	i = -1;
 	if (table->nbr_limits_meals == 0)
@@ -54,7 +82,7 @@ void	dinner_start(t_table *table)
 			safe_thread_handle(&table->philos[i].thread_id, dinner_simulation,
 				&table->philos[i], CREATE);
 	}
-	table->start_simulation = get_time(MILISECOND);
+	table->start_simulation = get_time(MILLISECOND);
 
 	
 	set_bool(&table->table_mutex, &table->all_threads_ready, true);

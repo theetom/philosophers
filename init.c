@@ -6,7 +6,7 @@
 /*   By: toferrei <toferrei@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 15:40:49 by toferrei          #+#    #+#             */
-/*   Updated: 2024/11/19 15:30:02 by toferrei         ###   ########.fr       */
+/*   Updated: 2024/11/24 21:53:14 by toferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,9 @@ static void	philo_init(t_table *table)
 		philo = table->philos + i;
 		philo->id = i + 1;
 		philo->full = false;
+		philo->meals_counter = 0;
 		philo->table = table;
+		safe_mutex_handle(&philo->philo_mutex, INIT);
 		assign_forks(philo, table->forks, i);
 	}
 
@@ -52,8 +54,9 @@ void	data_init(t_table *table)
 	table->end_simulation = false;
 	table->all_threads_ready = false;
 	table->philos = safe_malloc (sizeof(t_philo) * table->philo_nbr);
-	table->forks = safe_malloc (sizeof(t_fork) * table->philo_nbr);
 	safe_mutex_handle(&table->table_mutex, INIT);
+	safe_mutex_handle(&table->write_mutex, INIT);
+	table->forks = safe_malloc (sizeof(t_fork) * table->philo_nbr);
 	while (++i < table->philo_nbr)
 	{
 		safe_mutex_handle(&table->forks[i].fork, INIT);

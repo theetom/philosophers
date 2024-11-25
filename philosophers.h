@@ -6,7 +6,7 @@
 /*   By: toferrei <toferrei@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 14:45:41 by toferrei          #+#    #+#             */
-/*   Updated: 2024/11/19 15:46:57 by toferrei         ###   ########.fr       */
+/*   Updated: 2024/11/24 22:13:01 by toferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,19 @@
 # define C		"\033[1;36m"
 # define W		"\033[1;37m"
 
-typedef enum	e_opcode
+# define DEBUG_MODE	1
+
+typedef enum e_status
+{
+	EATING,
+	SLEEPING,
+	THINKING,
+	TAKE_FIRST_FORK,
+	TAKE_SECOND_FORK,
+	DIED,
+}				t_philo_status;
+
+typedef enum e_opcode
 {
 	LOCK,
 	UNLOCK,
@@ -43,10 +55,10 @@ typedef enum	e_opcode
 	DETACH,
 }				t_opcode;
 
-typedef enum	e_time_code
+typedef enum e_time_code
 {
 	SECOND,
-	MILISECOND,
+	MILLISECOND,
 	MICROSECOND,
 }				t_time_code;
 
@@ -70,6 +82,7 @@ typedef struct s_philo
 	t_fork		*first_fork;
 	t_fork		*second_fork;
 	pthread_t	thread_id;
+	t_mtx		philo_mutex;
 	t_table		*table;
 }				t_philo;
 
@@ -84,9 +97,12 @@ typedef struct s_table
 	bool		end_simulation;
 	bool		all_threads_ready;
 	t_mtx		table_mutex;
+	t_mtx		write_mutex;
 	t_fork		*forks;
 	t_philo		*philos;
 }				t_table;
+
+void	dinner_start(t_table *table);
 
 // Parsing
 
@@ -96,6 +112,7 @@ void	parse_input(t_table *table, char **argv);
 
 void	error_exit(const char *error);
 long	get_time(t_time_code time_code);
+void	precise_usleep(long usec, t_table *table);
 
 // Init
 
@@ -112,12 +129,16 @@ void	safe_thread_handle(pthread_t *thread, void *(*foo)(void *),
 
 void	set_bool(t_mtx *mutex, bool *dest, bool value);
 bool	get_bool(t_mtx *mutex, bool *value);
-void	set_long(t_mtx *mutex, bool *dest, bool value);
-long	get_long(t_mtx *mutex, bool *value);
+void	set_long(t_mtx *mutex, long *dest, long value);
+long	get_long(t_mtx *mutex, long *value);
 bool	simulation_finished(t_table *table);
 
 // Synchro Utils
 
 void	wait_all_threads(t_table *table);
+
+// Write
+
+void	write_status(t_philo_status status, t_philo *philo, bool debug);
 
 #endif

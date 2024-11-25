@@ -6,21 +6,12 @@
 /*   By: toferrei <toferrei@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 15:42:36 by toferrei          #+#    #+#             */
-/*   Updated: 2024/11/18 17:52:38 by toferrei         ###   ########.fr       */
+/*   Updated: 2024/11/24 02:17:08 by toferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philosophers.h"
 
-void	*safe_malloc(size_t bytes)
-{
-	void	*ret;
-
-	ret = malloc(bytes);
-	if (NULL == ret)
-		exit_error("Malloc Error");
-	return (ret);
-}
 
 static void	handle_mutex_error(int status, t_opcode opcode)
 {
@@ -88,4 +79,14 @@ void	safe_thread_handle(pthread_t *thread, void *(*foo)(void *),
 	else
 		error_exit("Wrong opcode for thread_handle:"
 			" use <CREATE> <JOIN> <DETACH>");
+}
+
+void	*safe_malloc(size_t bytes)
+{
+	void	*ret;
+
+	ret = malloc(bytes);
+	if (NULL == ret)
+		error_exit("Malloc Error");
+	return (ret);
 }
