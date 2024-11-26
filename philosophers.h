@@ -6,7 +6,7 @@
 /*   By: toferrei <toferrei@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 14:45:41 by toferrei          #+#    #+#             */
-/*   Updated: 2024/11/25 14:07:25 by toferrei         ###   ########.fr       */
+/*   Updated: 2024/11/26 01:16:49 by toferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@
 # define C		"\033[1;36m"
 # define W		"\033[1;37m"
 
-# define DEBUG_MODE	1
+# define DEBUG_MODE	0
 
 typedef enum e_status
 {
@@ -105,6 +105,7 @@ struct s_table
 };
 
 void	dinner_start(t_table *table);
+void	thinking(t_philo *philo, bool pre_simulation);
 
 // Parsing
 
@@ -115,6 +116,7 @@ void	parse_input(t_table *table, char **argv);
 void	error_exit(const char *error);
 long	get_time(t_time_code time_code);
 void	precise_usleep(long usec, t_table *table);
+void	clean(t_table *table);
 
 // Init
 
@@ -138,9 +140,16 @@ bool	simulation_finished(t_table *table);
 // Synchro Utils
 
 void	wait_all_threads(t_table *table);
+bool	all_threads_running(t_mtx *mutex, long *threads, long philo_nbr);
+void	increase_long(t_mtx *mutex, long *value);
+void	de_synchronizing_philos(t_philo *philo);
 
 // Write
 
 void	write_status(t_philo_status status, t_philo *philo, bool debug);
+
+// Monitoring
+
+void	*monitor_dinner(void *data);
 
 #endif
