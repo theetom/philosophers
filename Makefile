@@ -6,27 +6,37 @@
 #    By: toferrei <toferrei@student.42lisboa.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/04 14:44:14 by toferrei          #+#    #+#              #
-#    Updated: 2024/12/04 15:32:03 by toferrei         ###   ########.fr        #
+#    Updated: 2024/12/04 15:52:44 by toferrei         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME        = philo
+NAME        =	philo
 
-LIBFT       = Libft/
-PRINTF      = Ft_Printf/
-SRC         = Sources/
-OBJ_DIR     = Objects/
-LIBFT_A     = $(LIBFT)libft.a
-PRINTF_A    = $(PRINTF)libftprintf.a
+LIBFT		=	Libft/
+PRINTF		=	Ft_Printf/
+SRC			=	Sources/
+OBJ_DIR		=	Objects/
+LIBFT_A		=	$(LIBFT)libft.a
+PRINTF_A	=	$(PRINTF)libftprintf.a
 
 # Sources and Objects
-SOURCES     = $(wildcard $(SRC)*.c) # All .c files in Sources/
-OBJECTS     = $(patsubst $(SRC)%.c, $(OBJ_DIR)%.o, $(SOURCES))
+SOURCES		=	$(SRC)dinner.c \
+				$(SRC)getter_setter.c \
+				$(SRC)init.c \
+				$(SRC)main.c \
+				$(SRC)monitoring.c \
+				$(SRC)parsing.c \
+				$(SRC)safe_functions.c \
+				$(SRC)synchro_utils.c \
+				$(SRC)utils.c \
+				$(SRC)write.c
+			
+OBJECTS		=	$(patsubst $(SRC)%.c, $(OBJ_DIR)%.o, $(SOURCES))
 
 # Compiler and Flags
-CC          = cc
-LDFLAGS     = -L$(PRINTF) -L$(LIBFT) -lftprintf -lft
-CFLAGS      = -Wall -Wextra -Werror -g
+CC			=	cc
+LDFLAGS		=	-L$(PRINTF) -L$(LIBFT) -lftprintf -lft
+CFLAGS		=	-Wall -Wextra -Werror -g
 
 # Default Target
 all: $(NAME)
