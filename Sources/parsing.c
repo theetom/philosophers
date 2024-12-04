@@ -6,7 +6,7 @@
 /*   By: toferrei <toferrei@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 15:12:44 by toferrei          #+#    #+#             */
-/*   Updated: 2024/11/24 21:29:42 by toferrei         ###   ########.fr       */
+/*   Updated: 2024/12/04 15:10:30 by toferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,14 +21,6 @@ static inline bool	is_space(char c)
 {
 	return ((c >= 9 && c <= 13) || 32 == c);
 }
-
-/* 
-	1)check for negatives
-	2) chack if the number is valid
-	3) check for int max
-
-	rturn ptr to number
- */
 
 static const char	*valid_input(const char *str)
 {
@@ -64,10 +56,6 @@ static long	ft_atol(const char *str)
 		error_exit("The value is too big, INT_MAX is the limit");
 	return (nbr);
 }
-
-// 1	actual numbers
-// 2	not > int max
-// 3	timestamps > 60ms
 
 void	parse_input(t_table *table, char **argv)
 {

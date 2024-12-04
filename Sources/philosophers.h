@@ -6,7 +6,7 @@
 /*   By: toferrei <toferrei@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 14:45:41 by toferrei          #+#    #+#             */
-/*   Updated: 2024/11/26 01:16:49 by toferrei         ###   ########.fr       */
+/*   Updated: 2024/12/04 15:48:02 by toferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@
 # include <sys/time.h>
 # include <limits.h>
 # include <errno.h>
+# include "../Ft_Printf/ft_printf.h"
+# include "../Libft/libft.h"
 
 # define RST	"\033[0m"
 # define RED	"\033[1;31m"
@@ -70,7 +72,6 @@ typedef struct s_fork
 	t_mtx		fork;
 	int			fork_id;
 }				t_fork;
-
 
 typedef struct s_philo
 {

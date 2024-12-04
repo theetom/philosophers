@@ -6,7 +6,7 @@
 /*   By: toferrei <toferrei@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 15:01:03 by toferrei          #+#    #+#             */
-/*   Updated: 2024/11/25 16:51:59 by toferrei         ###   ########.fr       */
+/*   Updated: 2024/12/04 15:11:39 by toferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void	precise_usleep(long usec, t_table *table)
 		if (rem > 1e3)
 			usleep(rem / 2);
 		else
-		{ // spinlock
+		{
 			while (get_time(MICROSECOND) - start < usec)
 				;
 		}
@@ -71,6 +71,6 @@ void	clean(t_table *table)
 
 void	error_exit(const char *error)
 {
-	printf(RED"%s\n"RST, error);
+	ft_printf(RED"%s\n"RST, error);
 	exit(EXIT_FAILURE);
 }

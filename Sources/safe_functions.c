@@ -6,12 +6,11 @@
 /*   By: toferrei <toferrei@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 15:42:36 by toferrei          #+#    #+#             */
-/*   Updated: 2024/11/24 02:17:08 by toferrei         ###   ########.fr       */
+/*   Updated: 2024/12/04 14:37:33 by toferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philosophers.h"
-
 
 static void	handle_mutex_error(int status, t_opcode opcode)
 {
