@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   write.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: toferrei <toferrei@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: toferrei <toferrei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 15:04:47 by toferrei          #+#    #+#             */
-/*   Updated: 2024/12/04 15:47:42 by toferrei         ###   ########.fr       */
+/*   Updated: 2024/12/05 17:16:02 by toferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ long elapsed)
 		ft_printf(RED"\t\t %d %d died\n"RST, elapsed, philo->id);
 }
 
-void	write_status(t_philo_status status, t_philo *philo, bool debug)
+void	write_status(t_philo_status status, t_philo *philo, bool debug, long death)
 {
 	long	elapsed;
 
@@ -57,7 +57,7 @@ void	write_status(t_philo_status status, t_philo *philo, bool debug)
 		else if (THINKING == status && !simulation_finished(philo->table))
 			ft_printf(W"%d"RST" %d is thinking \n", elapsed, philo->id);
 		else if (DIED == status)
-			ft_printf(RED"%d"RST" %d died\n"RST, elapsed, philo->id);
+			ft_printf(RED"%d"RST" %d died\n"RST, death, philo->id);
 	}
 	safe_mutex_handle(&philo->table->write_mutex, UNLOCK);
 }

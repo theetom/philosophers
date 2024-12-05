@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philosophers.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: toferrei <toferrei@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: toferrei <toferrei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 14:45:41 by toferrei          #+#    #+#             */
-/*   Updated: 2024/12/04 15:48:02 by toferrei         ###   ########.fr       */
+/*   Updated: 2024/12/05 17:16:05 by toferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -147,7 +147,7 @@ void	de_synchronizing_philos(t_philo *philo);
 
 // Write
 
-void	write_status(t_philo_status status, t_philo *philo, bool debug);
+void	write_status(t_philo_status status, t_philo *philo, bool debug, long death);
 
 // Monitoring
 
