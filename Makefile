@@ -6,17 +6,15 @@
 #    By: toferrei <toferrei@student.42lisboa.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/04 14:44:14 by toferrei          #+#    #+#              #
-#    Updated: 2024/12/04 15:52:44 by toferrei         ###   ########.fr        #
+#    Updated: 2025/01/06 13:13:39 by toferrei         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME        =	philo
 
-LIBFT		=	Libft/
 PRINTF		=	Ft_Printf/
 SRC			=	Sources/
 OBJ_DIR		=	Objects/
-LIBFT_A		=	$(LIBFT)libft.a
 PRINTF_A	=	$(PRINTF)libftprintf.a
 
 # Sources and Objects
@@ -35,7 +33,7 @@ OBJECTS		=	$(patsubst $(SRC)%.c, $(OBJ_DIR)%.o, $(SOURCES))
 
 # Compiler and Flags
 CC			=	cc
-LDFLAGS		=	-L$(PRINTF) -L$(LIBFT) -lftprintf -lft
+LDFLAGS		=	-L$(PRINTF) -lftprintf
 CFLAGS		=	-Wall -Wextra -Werror -g
 
 # Default Target
@@ -43,7 +41,6 @@ all: $(NAME)
 
 # Build the executable
 $(NAME): $(OBJECTS)
-	@$(MAKE) -s -C $(LIBFT)
 	@$(MAKE) -s -C $(PRINTF)
 	@$(CC) $(CFLAGS) $(OBJECTS) -o $(NAME) $(LDFLAGS)
 	@echo "All files were created"
@@ -61,7 +58,6 @@ clean:
 
 # Full clean
 fclean: clean
-	@$(MAKE) -s -C $(LIBFT) fclean
 	@$(MAKE) -s -C $(PRINTF) clean
 	@rm -f $(NAME)
 	@echo "All files were cleaned"
@@ -72,7 +68,6 @@ re: fclean all
 norminette:
 	norminette $(SRC)
 	norminette $(PRINTF)
-	norminette $(LIBFT)
 
 # Phony targets
 .PHONY: all clean fclean re

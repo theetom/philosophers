@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philosophers.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: toferrei <toferrei@student.42.fr>          +#+  +:+       +#+        */
+/*   By: toferrei <toferrei@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 14:45:41 by toferrei          #+#    #+#             */
-/*   Updated: 2024/12/05 17:16:05 by toferrei         ###   ########.fr       */
+/*   Updated: 2025/01/06 14:45:14 by toferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@
 # include <limits.h>
 # include <errno.h>
 # include "../Ft_Printf/ft_printf.h"
-# include "../Libft/libft.h"
 
 # define RST	"\033[0m"
 # define RED	"\033[1;31m"
@@ -33,8 +32,6 @@
 # define M		"\033[1;35m"
 # define C		"\033[1;36m"
 # define W		"\033[1;37m"
-
-# define DEBUG_MODE	0
 
 typedef enum e_status
 {
@@ -98,6 +95,7 @@ struct s_table
 	bool		end_simulation;
 	bool		all_threads_ready;
 	long		threads_running_nbr;
+	bool		error;
 	pthread_t	monitor;
 	t_mtx		table_mutex;
 	t_mtx		write_mutex;
@@ -147,7 +145,7 @@ void	de_synchronizing_philos(t_philo *philo);
 
 // Write
 
-void	write_status(t_philo_status status, t_philo *philo, bool debug, long death);
+void	write_status(t_philo_status status, t_philo *philo, long death);
 
 // Monitoring
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   monitoring.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: toferrei <toferrei@student.42.fr>          +#+  +:+       +#+        */
+/*   By: toferrei <toferrei@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 13:53:18 by toferrei          #+#    #+#             */
-/*   Updated: 2024/12/05 18:01:42 by toferrei         ###   ########.fr       */
+/*   Updated: 2025/01/06 13:50:11 by toferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,14 +34,11 @@ void	*monitor_dinner(void *data)
 	int		i;
 	t_table	*table;
 	long	elapsed;
-	long	start;
 
 	table = (t_table *)data;
-	
 	while (!all_threads_running(&table->table_mutex,
 			&table->threads_running_nbr, table->philo_nbr))
 		;
-	start = get_time(MILLISECOND);
 	while (!simulation_finished(table))
 	{
 		elapsed = get_time(MILLISECOND) - table->start_simulation;
@@ -50,11 +47,8 @@ void	*monitor_dinner(void *data)
 		{
 			if (philo_died(table->philos + i))
 			{
-				ft_printf("\n%d\n", start);
-				ft_printf("\n%d\n", table->start_simulation);
-				ft_printf("\n%d\n", elapsed);
 				set_bool(&table->table_mutex, &table->end_simulation, true);
-				write_status(DIED, table->philos + i, DEBUG_MODE, elapsed);
+				write_status(DIED, table->philos + i, elapsed);
 			}
 		}
 	}
