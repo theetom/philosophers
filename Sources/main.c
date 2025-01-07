@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: toferrei <toferrei@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: toferrei <toferrei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 14:59:10 by toferrei          #+#    #+#             */
-/*   Updated: 2025/01/06 15:03:55 by toferrei         ###   ########.fr       */
+/*   Updated: 2025/01/07 16:16:07 by toferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,8 @@ int	main(int argc, char **argv)
 		if (table.error == true)
 			return (1);
 		data_init(&table);
-		if (table.error == true)
-			return (1);
-		dinner_start(&table);
+		if (table.error == false)
+			dinner_start(&table);
 		clean(&table);
 	}
 	else

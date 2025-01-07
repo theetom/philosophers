@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philosophers.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: toferrei <toferrei@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: toferrei <toferrei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 14:45:41 by toferrei          #+#    #+#             */
-/*   Updated: 2025/01/06 14:45:14 by toferrei         ###   ########.fr       */
+/*   Updated: 2025/01/07 15:08:39 by toferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,7 +123,7 @@ void	data_init(t_table *table);
 
 // Safe Functions
 
-void	*safe_malloc(size_t bytes);
+void	*safe_malloc(size_t bytes, t_table *table);
 void	safe_mutex_handle(t_mtx *mutex, t_opcode opcode);
 void	safe_thread_handle(pthread_t *thread, void *(*foo)(void *),
 			void *data, t_opcode opcode);

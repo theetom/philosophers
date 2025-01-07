@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: toferrei <toferrei@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: toferrei <toferrei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 15:40:49 by toferrei          #+#    #+#             */
-/*   Updated: 2024/12/04 14:35:15 by toferrei         ###   ########.fr       */
+/*   Updated: 2025/01/07 15:09:16 by toferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,8 +52,8 @@ void	data_init(t_table *table)
 	table->end_simulation = false;
 	table->all_threads_ready = false;
 	table->threads_running_nbr = 0;
-	table->philos = safe_malloc (sizeof(t_philo) * table->philo_nbr);
-	table->forks = safe_malloc (sizeof(t_fork) * table->philo_nbr);
+	table->philos = safe_malloc (sizeof(t_philo) * table->philo_nbr, table);
+	table->forks = safe_malloc (sizeof(t_fork) * table->philo_nbr, table);
 	safe_mutex_handle(&table->table_mutex, INIT);
 	safe_mutex_handle(&table->write_mutex, INIT);
 	while (++i < table->philo_nbr)

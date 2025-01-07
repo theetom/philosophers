@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   getter_setter.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: toferrei <toferrei@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: toferrei <toferrei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 15:30:34 by toferrei          #+#    #+#             */
-/*   Updated: 2024/12/04 14:35:53 by toferrei         ###   ########.fr       */
+/*   Updated: 2025/01/07 16:28:40 by toferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,3 +52,4 @@ bool	simulation_finished(t_table *table)
 {
 	return (get_bool(&table->table_mutex, &table->end_simulation));
 }
+table->start_simulation = get_time(MILLIS

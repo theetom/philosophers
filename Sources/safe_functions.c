@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   safe_functions.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: toferrei <toferrei@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: toferrei <toferrei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 15:42:36 by toferrei          #+#    #+#             */
-/*   Updated: 2024/12/04 14:37:33 by toferrei         ###   ########.fr       */
+/*   Updated: 2025/01/07 16:12:05 by toferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static void	handle_mutex_error(int status, t_opcode opcode)
 	else if (EPERM == status)
 		error_exit("The current thread does not hold a lock on mutex.");
 	else if (ENOMEM == status)
-		error_exit("The process cannot allocate enougb memory to" \
+		error_exit("The process cannot allocate enough memory to" \
 				" create another mutex.");
 	else if (EBUSY == status)
 		error_exit("Mutex is locked");
@@ -76,16 +76,21 @@ void	safe_thread_handle(pthread_t *thread, void *(*foo)(void *),
 	else if (DETACH == opcode)
 		handle_thread_error(pthread_detach(*thread), opcode);
 	else
-		error_exit("Wrong opcode for thread_handle:"
+		{
+			error_exit("Wrong opcode for thread_handle:"
 			" use <CREATE> <JOIN> <DETACH>");
+		}
 }
 
-void	*safe_malloc(size_t bytes)
+void	*safe_malloc(size_t bytes, t_table *table)
 {
 	void	*ret;
 
 	ret = malloc(bytes);
 	if (NULL == ret)
+	{
+		table->error = true;
 		error_exit("Malloc Error");
+	}
 	return (ret);
 }

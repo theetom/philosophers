@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: toferrei <toferrei@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: toferrei <toferrei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 15:01:03 by toferrei          #+#    #+#             */
-/*   Updated: 2025/01/06 14:42:39 by toferrei         ###   ########.fr       */
+/*   Updated: 2025/01/07 16:03:41 by toferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,5 +72,4 @@ void	clean(t_table *table)
 void	error_exit(const char *error)
 {
 	ft_printf(RED"%s\n"RST, error);
-	// exit(EXIT_FAILURE);
 }
