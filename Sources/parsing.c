@@ -6,7 +6,7 @@
 /*   By: toferrei <toferrei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 15:12:44 by toferrei          #+#    #+#             */
-/*   Updated: 2025/01/07 16:16:59 by toferrei         ###   ########.fr       */
+/*   Updated: 2025/01/08 12:36:08 by toferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,13 +33,9 @@ static const char	*valid_input(const char *str)
 	if (*str == '+')
 		++str;
 	else if (*str == '-')
-	{
 		error_exit("Feed me only positive numbers");
-	}
 	if (!is_digit(*str))
-	{
 		error_exit("The input is not a correct digit");
-	}
 	number = str;
 	while (is_digit(*str++))
 		++len;
@@ -71,6 +67,8 @@ static long	ft_atol(const char *str)
 
 void	parse_input(t_table *table, char **argv)
 {
+	if (is_there_comma(argv, table))
+		return ;
 	table->philo_nbr = ft_atol(argv[1]);
 	table->time_to_die = ft_atol(argv[2]) * 1e3;
 	table->time_to_eat = ft_atol(argv[3]) * 1e3;

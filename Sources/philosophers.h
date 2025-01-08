@@ -6,7 +6,7 @@
 /*   By: toferrei <toferrei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 14:45:41 by toferrei          #+#    #+#             */
-/*   Updated: 2025/01/07 15:08:39 by toferrei         ###   ########.fr       */
+/*   Updated: 2025/01/08 12:52:21 by toferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,6 +109,7 @@ void	thinking(t_philo *philo, bool pre_simulation);
 // Parsing
 
 void	parse_input(t_table *table, char **argv);
+bool	is_there_comma(char **argv, t_table *table);
 
 // Utils
 

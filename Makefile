@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: toferrei <toferrei@student.42lisboa.com    +#+  +:+       +#+         #
+#    By: toferrei <toferrei@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/04 14:44:14 by toferrei          #+#    #+#              #
-#    Updated: 2025/01/06 13:13:39 by toferrei         ###   ########.fr        #
+#    Updated: 2025/01/08 12:36:35 by toferrei         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,7 +27,8 @@ SOURCES		=	$(SRC)dinner.c \
 				$(SRC)safe_functions.c \
 				$(SRC)synchro_utils.c \
 				$(SRC)utils.c \
-				$(SRC)write.c
+				$(SRC)write.c \
+				$(SRC)parsing_2.c
 			
 OBJECTS		=	$(patsubst $(SRC)%.c, $(OBJ_DIR)%.o, $(SOURCES))
 

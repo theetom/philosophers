@@ -6,7 +6,7 @@
 /*   By: toferrei <toferrei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 15:42:36 by toferrei          #+#    #+#             */
-/*   Updated: 2025/01/07 16:12:05 by toferrei         ###   ########.fr       */
+/*   Updated: 2025/01/08 12:12:31 by toferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,10 +76,10 @@ void	safe_thread_handle(pthread_t *thread, void *(*foo)(void *),
 	else if (DETACH == opcode)
 		handle_thread_error(pthread_detach(*thread), opcode);
 	else
-		{
-			error_exit("Wrong opcode for thread_handle:"
+	{
+		error_exit("Wrong opcode for thread_handle:"
 			" use <CREATE> <JOIN> <DETACH>");
-		}
+	}
 }
 
 void	*safe_malloc(size_t bytes, t_table *table)

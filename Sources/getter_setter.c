@@ -6,7 +6,7 @@
 /*   By: toferrei <toferrei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 15:30:34 by toferrei          #+#    #+#             */
-/*   Updated: 2025/01/07 16:28:40 by toferrei         ###   ########.fr       */
+/*   Updated: 2025/01/08 12:59:21 by toferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,10 +46,7 @@ long	get_long(t_mtx *mutex, long *value)
 	return (ret);
 }
 
-// redudant?
-
 bool	simulation_finished(t_table *table)
 {
 	return (get_bool(&table->table_mutex, &table->end_simulation));
 }
-table->start_simulation = get_time(MILLIS
